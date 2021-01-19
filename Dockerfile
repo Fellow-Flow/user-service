@@ -2,7 +2,7 @@ FROM gradle:jdk11 AS builder
 
 LABEL maintainer="Nicholas Dietz @ Fellow-Flow"
 WORKDIR /app
-COPY build.gradle.kts settings.gradle ./
+COPY build.gradle.kts settings.gradle.kts ./
 COPY src/ src/
 RUN gradle --no-daemon build --stacktrace -x test
 
