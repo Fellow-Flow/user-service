@@ -15,7 +15,7 @@ on:
 
 env:
   # TODO: Change variable to your image's name.
-  IMAGE_NAME: fellow-flow
+  IMAGE_NAME: ff-user-service
 
 jobs:
   # Push image to GitHub Packages.
