@@ -11,5 +11,5 @@ FROM gcr.io/distroless/java:11
 
 WORKDIR /user-service
 COPY --from=builder /app/build/libs/*.jar ./app.jar
-EXPOSE 8081
+EXPOSE 8090
 CMD [ "-Xmx256m", "-Xss32m", "-Djava.security.egd=file:/dev/./urandom","./app.jar"]
