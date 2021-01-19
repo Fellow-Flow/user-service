@@ -1,1 +1,6 @@
-
+keycloak:
+  realm: fellowflow
+  resource: ff:user-service
+  auth-server-url: http://docker-machine:3000/auth
+  ssl-required: external
+  principal-attribute: preferred_username
