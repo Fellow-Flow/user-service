@@ -13,13 +13,12 @@ import org.springframework.security.core.session.SessionRegistryImpl
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy
 
-
 /**
  * @author Nicholas Dietz @ Fellow-Flow
  **/
 @KeycloakConfiguration
 class KeycloakConfiguration : KeycloakWebSecurityConfigurerAdapter() {
-    
+
     companion object {
         // ORIGINS
         const val ALLOWED_ORIGINS_WILDCARD = "*"
@@ -32,7 +31,7 @@ class KeycloakConfiguration : KeycloakWebSecurityConfigurerAdapter() {
         // OTHERS
         const val ALLOW_CREDENTIALS = true
     }
-    
+
     @Autowired
     fun configureGlobal(authenticationManagerBuilder: AuthenticationManagerBuilder) {
         val simpleAuthorityMapper = SimpleAuthorityMapper()
@@ -57,7 +56,7 @@ class KeycloakConfiguration : KeycloakWebSecurityConfigurerAdapter() {
     override fun configure(httpSecurity: HttpSecurity) {
         super.configure(httpSecurity)
         httpSecurity.authorizeRequests()
-                .antMatchers("*/**").hasRole("ff:user-service:user")
-                .anyRequest().permitAll()
+            .antMatchers("*/**").hasRole("ff:user-service:user")
+            .anyRequest().permitAll()
     }
 }

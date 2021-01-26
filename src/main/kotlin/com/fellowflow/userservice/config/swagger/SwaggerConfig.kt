@@ -54,13 +54,13 @@ class SwaggerConfig {
     private fun getApiInformation(): ApiInfo {
         return ApiInfo(
             "Fellow-Flow User Service",
-                null,
-                null,
-                null,
-                Contact("Nicholas Dietz", "https://github.com/nicos-dev", ""),
-                null,
-                null,
-                emptyList()
+            null,
+            null,
+            null,
+            Contact("Nicholas Dietz", "https://github.com/nicos-dev", ""),
+            null,
+            null,
+            emptyList()
         )
     }
 
@@ -75,7 +75,7 @@ class SwaggerConfig {
         authorizationScopeList.add(AuthorizationScope("write", "access all"))
         val grantTypes: MutableList<GrantType> = mutableListOf()
         val passwordCredentialsGrant: GrantType = ResourceOwnerPasswordCredentialsGrant(
-                "$keycloakAuthServerUrl/realms/$keycloakRealm/protocol/openid-connect/token"
+            "$keycloakAuthServerUrl/realms/$keycloakRealm/protocol/openid-connect/token"
         )
         grantTypes.add(passwordCredentialsGrant)
         return OAuth("oauth2", authorizationScopeList, grantTypes)

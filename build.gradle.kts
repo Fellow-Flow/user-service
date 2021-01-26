@@ -22,6 +22,14 @@ repositories {
 	mavenCentral()
 	google()
 	jcenter()
+	maven {
+		name = "github"
+		url = uri("https://maven.pkg.github.com/nicos-dev/spring-keycloak-starter")
+		credentials {
+			username = (project.properties["githubUser"] ?: System.getenv("GITHUB_USER")).toString()
+			password = (project.properties["githubPassword"] ?: System.getenv("GITHUB_TOKEN")).toString()
+		}
+	}
 }
 
 dependencies {
@@ -35,6 +43,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("com.nicos-dev:spring-keycloak-starter:0.0.1-SNAPSHOT")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("com.h2database:h2")
 	annotationProcessor("org.projectlombok:lombok")
@@ -73,4 +82,12 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+	debug.set(true)
+	ignoreFailures.set(true)
+	filter {
+		exclude("*.kts")
+	}
 }
